@@ -1,106 +1,96 @@
-    #barestho-widget {
-        width: 320px;
-        height:550px;
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 0 20px 25px 5px rgba(0, 0, 0, 0.060), 0 8px 10px 5px rgba(0, 0, 0, 0);
-        position: fixed;
-        bottom: 80px;
-        right: 15px;
-        z-index: 9999;
-    }
-    #background-widget.barestho-closed{
-        display: none;
-    }
-    
-      /* ---------------------------barestho-button ---------------------------------- */
+#barestho-form * {
+    font-family: 'Poppins', 'Ubuntu', 'sans-serif';
+}
 
-    #barestho-button{
-        width: 130px;
-        font-weight: 800;
-        border-radius: 100px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        z-index: 9999;
-        padding: 15px 40px;
-        border: 1px solid white;
-        display: flex;
-        user-select: none;
-    }
+#barestho-form {
+    display: flex;
+    flex-flow: column nowrap;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+    margin: 1em;
+    gap: 1em;
+}
 
-    #barestho-button-blue button {
-        background-color: #252332;
-        color: white;
-    }
+#barestho-form > #barestho-widget-container > #barestho-widget {
+    width: 320px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: white;
+}
 
-    #barestho-button-blue div {
-        width: 20px;
-        height: 20px;
-        background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_red.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        position: fixed;
-        bottom: 30px;
-        right: 110px;
-        cursor: pointer;
-        z-index: 9999999;
-    }
+#barestho-form > #barestho-widget-container {
+    display: none;
+    position: relative;
+}
 
-    #barestho-button-red button {
-        background-color: #dc0044;;
-        color: white;
-    }
-    #barestho-button-red div {
-        width: 20px;
-        height: 20px;
-        background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_blue.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        position: fixed;
-        bottom: 30px;
-        right: 110px;
-        cursor: pointer;
-        z-index: 9999999;
-    }
+#barestho-form > #barestho-widget-container.open {
+    display: block;
+}
 
-    #barestho-button-white button {
-        background-color: white;
-        border: solid 2px #252332;
-        color: #252332;
-    }
+#barestho-form > #barestho-button {
+    background-color: #DC0044;
+    color: white;
+    border: 0;
+    padding: .5em;
+    border-radius: 10em;
+    width: fit-content;
+    position: relative;
+    z-index: 200;
+    font-size: 15px;
+}
 
-    #barestho-button-white div {
-        width: 20px;
-        height: 20px;
-        background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_blue_red.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        position: fixed;
-        bottom: 30px;
-        right: 110px;
-        cursor: pointer;
-        z-index: 9999999;
-    }
+#barestho-form > #barestho-button::before {
+    background-size: contain;
+    content: ' ';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    margin-right: .2em;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_blue.svg');
+}
+#barestho-form > #barestho-button.blue {
+    background-color: #252332;
+}
+#barestho-form > #barestho-button.blue::before {
+    background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_red.svg');
+}
 
-    #barestho-widget.barestho-closed{
-        display: none;
-    }
+#barestho-form > #barestho-button.white {
+    background-color: white;
+    color: #252332;
+}
+#barestho-form > #barestho-button.white::before {
+    background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_blue_red.svg');
+}
 
-    @media (max-width: 450px) {
-        #barestho-widget{
-            width: 100%;
-            box-shadow: none;
-            height: 100%;
-            right: 0;
-            left: 0;
-            border-radius: 0px;
-            top: 0;
-        }
-      }
-    
+/* modal mode  */
+
+#barestho-form > #barestho-widget-container.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#barestho-form > #barestho-widget-container.modal > #barestho-widget {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+}
+
+#barestho-form > #barestho-widget-container.modal::before {
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.353);
+    z-index: 100;
+}
