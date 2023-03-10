@@ -11,6 +11,7 @@
     align-items: flex-end;
     margin: 1em;
     gap: 1em;
+    z-index: 9999;
 }
 
 #barestho-form > #barestho-widget-container > #barestho-widget {
@@ -53,7 +54,7 @@
     border-radius: 10em;
     width: fit-content;
     position: relative;
-    z-index: 999;
+    z-index: 1050;
     font-size: 15px;
     font-weight: 700;
     padding: 10px 14px;
