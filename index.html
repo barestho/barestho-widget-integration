@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+        <!-- CDN -->
+        
+        <link href="https://cdn.jsdelivr.net/gh/barestho/barestho-widget-integration@main/barestho-widget-style.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/barestho/barestho-widget-integration@main/barestho-widget-script.js" defer></script>
+</head>
+
+<body>
+
+    <div id="barestho-form">
+        <div id="barestho-widget-container" class="default">
+            <iframe id="barestho-widget" src="https://barestho.reservationv2.barestotech.ovh:8000/?view=widget"
+                frameborder="0"></iframe>
+        </div>
+        <button id="barestho-button" class="barestho-blue" onclick="onToggle()">
+            Réserver
+        </button>
+    </div>
+
+
+</body>
+
+</html>

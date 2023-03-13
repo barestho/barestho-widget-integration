@@ -1,3 +1,6 @@
+#barestho-widget {
+    height:500px;
+}
 #barestho-form * {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
 }
@@ -73,22 +76,46 @@
     margin-right: 7px;
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_blue.svg');
 }
-#barestho-form > #barestho-button.blue {
+#barestho-form > #barestho-button.barestho-blue {
     background-color: #252332;
 }
-#barestho-form > #barestho-button.blue::before {
+#barestho-form > #barestho-button.barestho-blue::before {
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_red.svg');
 }
 
-#barestho-form > #barestho-button.white {
+#barestho-form > #barestho-button.barestho-white {
     background-color: white;
     color: #252332;
 }
-#barestho-form > #barestho-button.white::before {
+#barestho-form > #barestho-button.barestho-white::before {
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_blue_red.svg');
 }
 
-/* modal mode  */
+/* ---------------------------------- default mode ---------------------------------- */
+
+  @media (max-width: 450px) {
+    #barestho-form > #barestho-widget-container.default::before {
+        content: ' ';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+    #barestho-form > #barestho-widget-container.default > #barestho-widget {
+        position: absolute;
+        top: 0;
+    }
+    #barestho-form > #barestho-widget-container.default {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+  }
+
+/* ------------------------------- modal mode ------------------------------- */
 
 #barestho-form > #barestho-widget-container.modal {
     position: fixed;
@@ -126,3 +153,4 @@
         top: calc(50% - 1.5em);
     }
   }
+
