@@ -62,6 +62,7 @@
     font-weight: 700;
     padding: 10px 14px;
     width: 130px;
+    cursor: pointer;
 }
 
 #barestho-form > #barestho-button::before {
