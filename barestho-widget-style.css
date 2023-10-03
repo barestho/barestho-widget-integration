@@ -1,6 +1,11 @@
-#barestho-widget {
-    height:500px;
+body {
+    background-color: aqua;
 }
+
+#barestho-widget {
+    height: 500px;
+}
+
 #barestho-form * {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
 }
@@ -11,17 +16,20 @@
     position: fixed;
     bottom: 0;
     right: 0;
+    left: 0;
     align-items: flex-end;
-    margin: 1em;
     gap: 1em;
     z-index: 9999;
+    @media (min-width: 450px) {
+        margin: 1em;
+    }
 }
 
-#barestho-form > #barestho-widget-container > #barestho-widget {
-    height:500px;
-    width: 320px;
+#barestho-form>#barestho-widget-container>#barestho-widget {
+    height: 500px;
+    width: 350px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 20px 25px 5px rgba(0, 0, 0, 0.060), 0 8px 10px 5px rgba(0, 0, 0, 0);
     position: fixed;
     bottom: 80px;
@@ -29,43 +37,47 @@
 }
 
 @media (max-width: 450px) {
-    #barestho-form > #barestho-widget-container > #barestho-widget {
+    #barestho-form>#barestho-widget-container>#barestho-widget {
         width: 100%;
         box-shadow: none;
         height: calc(100% - 3em);
         right: 0;
         left: 0;
         border-radius: 0px;
-        top: 0;        
+        top: 0;
     }
-  }
+}
 
-#barestho-form > #barestho-widget-container {
+#barestho-form>#barestho-widget-container {
     display: none;
     position: relative;
 }
 
-#barestho-form > #barestho-widget-container.open {
+#barestho-form>#barestho-widget-container.open {
     display: block;
 }
 
-#barestho-form > #barestho-button {
+#barestho-form>#barestho-button {
     background-color: #DC0044;
     color: white;
     border: 0;
     padding: .5em;
-    border-radius: 10em;
     width: fit-content;
     position: relative;
     z-index: 1050;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 700;
     padding: 10px 14px;
-    width: 130px;
     cursor: pointer;
+    width: 100%;
+    @media (min-width: 450px) {
+        width: 130px;
+        border-radius: 10em;
+        font-size: 15px;
+    }
 }
 
-#barestho-form > #barestho-button::before {
+#barestho-form>#barestho-button::before {
     background-size: contain;
     content: ' ';
     display: inline-block;
@@ -77,25 +89,28 @@
     margin-right: 7px;
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_blue.svg');
 }
-#barestho-form > #barestho-button.barestho-blue {
+
+#barestho-form>#barestho-button.barestho-blue {
     background-color: #252332;
 }
-#barestho-form > #barestho-button.barestho-blue::before {
+
+#barestho-form>#barestho-button.barestho-blue::before {
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_white_red.svg');
 }
 
-#barestho-form > #barestho-button.barestho-white {
+#barestho-form>#barestho-button.barestho-white {
     background-color: white;
     color: #252332;
 }
-#barestho-form > #barestho-button.barestho-white::before {
+
+#barestho-form>#barestho-button.barestho-white::before {
     background-image: url('https://barestho.s3.eu-west-3.amazonaws.com/barestho_b_blue_red.svg');
 }
 
 /* ---------------------------------- default mode ---------------------------------- */
 
-  @media (max-width: 450px) {
-    #barestho-form > #barestho-widget-container.default::before {
+@media (max-width: 450px) {
+    #barestho-form>#barestho-widget-container.default::before {
         content: ' ';
         position: absolute;
         display: block;
@@ -103,55 +118,107 @@
         height: 100%;
         background-color: white;
     }
-    #barestho-form > #barestho-widget-container.default > #barestho-widget {
+
+    #barestho-form>#barestho-widget-container.default>#barestho-widget {
         position: absolute;
         top: 0;
     }
-    #barestho-form > #barestho-widget-container.default {
+
+    #barestho-form>#barestho-widget-container.default {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 90vh;
     }
-  }
+}
 
 /* ------------------------------- modal mode ------------------------------- */
 
-#barestho-form > #barestho-widget-container.modal {
+#barestho-form>#barestho-widget-container.modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
 }
 
-#barestho-form > #barestho-widget-container.modal > #barestho-widget {
+#barestho-form>#barestho-widget-container.modal>#barestho-widget {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* border-radius: 20px; */
     transform: translate(-50%, -50%);
     z-index: 999;
+
+    @media (min-width: 768px) {
+        height: 540px;
+        width: 384px;
+    }
 }
 
-#barestho-form > #barestho-widget-container.modal::before {
+#barestho-form>#barestho-widget-container.modal::before {
     content: ' ';
     position: absolute;
     display: block;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.353);
+    background-color: rgba(0, 0, 0, 0.600);
     z-index: 998;
 }
 
 @media (max-width: 450px) {
-    #barestho-form > #barestho-widget-container.modal::before {
+    #barestho-form>#barestho-widget-container.modal::before {
         content: ' ';
-        background-color:white;
+        background-color: white;
     }
-    #barestho-form > #barestho-widget-container.modal > #barestho-widget {
+
+    #barestho-form>#barestho-widget-container.modal>#barestho-widget {
         position: absolute;
         top: calc(50% - 1.5em);
     }
-  }
+}
 
+/* new for modal close button */
+
+#barestho-form>#barestho-widget-container.modal>.barestho-close-button {
+    position: absolute;
+    top: 48.5%;
+    left: 50%;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: #252332;
+    color: white;
+    border: 0;
+    padding: .5em;
+    position: relative;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 2px 14px;
+    height: 70px;
+    cursor: pointer;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    text-align: right;
+    width: 370px;
+    height: 550px;
+
+    @media (min-width: 768px) {
+        width: 404px;
+        height: 590px;
+
+    }
+}
+
+#barestho-form>#barestho-widget-container.default>.barestho-close-button {
+    display: none;
+}
+
+.barestho-close-button svg {
+    height: 28px;
+    width: 28px;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}

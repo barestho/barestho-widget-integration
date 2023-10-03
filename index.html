@@ -9,18 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
 
-        <!-- CDN -->
-        
+    <!-- CDN -->
+    <link rel="stylesheet" href="barestho-widget-style.css">
+    <script src="barestho-widget-script.js" defer></script>
+    <!--         
         <link href="https://cdn.jsdelivr.net/gh/barestho/barestho-widget-integration@main/barestho-widget-style.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/gh/barestho/barestho-widget-integration@main/barestho-widget-script.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/gh/barestho/barestho-widget-integration@main/barestho-widget-script.js" defer></script> -->
 </head>
 
 <body>
 
     <div id="barestho-form">
-        <div id="barestho-widget-container" class="default">
-            <iframe id="barestho-widget" src="https://barestho.reservation.barestho.com/?view=widget"
-                frameborder="0"></iframe>
+        <div id="barestho-widget-container" class="modal">
+                <button class="barestho-close-button" onclick="onToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="svg-barestho">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <iframe id="barestho-widget" src="http://172.16.1.125:5173/?view=widget" frameborder="0"></iframe>
         </div>
         <button id="barestho-button" class="barestho-blue" onclick="onToggle()">
             Réserver
