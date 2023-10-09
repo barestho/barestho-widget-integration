@@ -1,4 +1,4 @@
-function onToggle() {
+function onBaresthoToggle() {
     const widget = document.querySelector("#barestho-widget-container");
     const button = document.querySelector("#barestho-button");
     widget.classList.toggle('open');
