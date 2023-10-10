@@ -1,3 +1,6 @@
+body {
+    background-color: #DC0044;
+}
 #barestho-form * {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
 }
@@ -125,7 +128,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: 90vh;
+        height: 96vh;
 
         @media (min-width: 450px) {
             height: 100vh;
@@ -140,7 +143,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 90vh;
+    height: 96vh;
 
     @media (min-width: 450px) {
         height: 100vh;
