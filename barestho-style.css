@@ -39,7 +39,7 @@
 }
 
 #barestho-form>#barestho-widget-container>#barestho-widget {
-    height: 80vh;
+    height: 70vh;
     width: 350px;
     background-color: white;
     border-radius: 18px;
@@ -47,6 +47,10 @@
     position: fixed;
     bottom: 80px;
     right: 15px;
+    @media (min-width: 768px){
+        height: 80vh;
+
+    }
 }
 
 @media (max-width: 450px) {
@@ -206,7 +210,7 @@
 /* new for modal close button */
 
 #barestho-form>#barestho-widget-container.modal>.barestho-close-button {
-    @media (min-width: 400px) {
+    @media (min-width: 450px) {
         position: absolute;
         top: 48.5%;
         left: 50%;
@@ -226,8 +230,6 @@
         border-top-right-radius: 25px;
         border-top-left-radius: 25px;
         text-align: right;
-        width: 370px;
-        height: 550px;
     }
 
     @media (min-width: 768px) {
