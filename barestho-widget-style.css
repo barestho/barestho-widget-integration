@@ -2,10 +2,6 @@ body {
     background-color: aqua;
 }
 
-#barestho-widget {
-    height: 500px;
-}
-
 #barestho-form * {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
 }
@@ -27,7 +23,7 @@ body {
 }
 
 #barestho-form>#barestho-widget-container>#barestho-widget {
-    height: 500px;
+    height: 75vh;
     width: 350px;
     background-color: white;
     border-radius: 15px;
@@ -164,7 +160,7 @@ body {
     z-index: 999;
 
     @media (min-width: 768px) {
-        height: 540px;
+        height: 650px;
         width: 384px;
     }
 }
@@ -220,7 +216,7 @@ body {
 
     @media (min-width: 768px) {
         width: 404px;
-        height: 590px;
+        height: 700px;
 
     }
 }
