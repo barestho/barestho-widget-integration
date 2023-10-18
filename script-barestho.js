@@ -1,7 +1,7 @@
 let widgetContainer = document.querySelector("#barestho-widget-container");
 let isModal = false;
 
-function toggleMode(mode) {
+function BaresthoToggleMode(mode) {
     if (mode === 'default') {
         widgetContainer.classList.remove('modal');
         widgetContainer.classList.add('default');
