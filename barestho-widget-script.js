@@ -4,3 +4,4 @@ function onToggle() {
     widget.classList.toggle('open');
     button.innerHTML = widget.classList.contains('open')? "Fermer": "Réserver";
 }
+
