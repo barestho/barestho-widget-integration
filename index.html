@@ -14,47 +14,19 @@
         <link href="barestho-widget-style.css" rel="stylesheet">
         <script src="barestho-widget-script.js" defer></script>
 
-        <style>
-            #barestho-widget-container {
-                height: auto;
-                max-width: 90%;
-                width: 320px;
-            }
-            #barestho-widget {
-                height: auto;
-                max-height: 90%;
-                width: 320px;
-                border: none;
-            }
-        </style>
 </head>
 
 <body>
 
     <div id="barestho-form">
         <div id="barestho-widget-container" class="default">
-            <iframe id="barestho-widget" src="http://localhost:3001/?view=widget"
+            <iframe id="barestho-widget" src="http://192.168.0.207:3001/?view=widget"
                 frameborder="0"></iframe>
         </div>
         <button id="barestho-button" class="barestho-blue" onclick="onToggle()">
             Réserver
         </button>
     </div>
-
-    <script>
-        window.addEventListener('message', function(event) {
-            if (event.origin === 'http://localhost:3001') {
-                const iframe = document.getElementById('barestho-widget');
-                const data = event.data;
-                if (data.height) {
-                    iframe.style.height = data.height + 'px';
-                }
-            }
-        });
-    </script>
-
-
-
 </body>
 
 </html>
