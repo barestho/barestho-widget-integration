@@ -5,7 +5,8 @@ body {
 #barestho-widget {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
     background-color: white;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     position: fixed;
     bottom: 15px;
     right: 15px;
