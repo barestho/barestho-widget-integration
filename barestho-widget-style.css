@@ -4,7 +4,6 @@ body {
 
 #barestho-widget {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
-    background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     position: fixed;
@@ -22,10 +21,8 @@ body {
         max-height: 100%;
         box-shadow: none;
         right: 0;
-        left: 0;
         bottom: 0;
         border-radius: 0px;
-        top: 0;
         overflow-y: scroll;
 
     }
