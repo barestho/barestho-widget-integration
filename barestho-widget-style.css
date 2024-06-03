@@ -1,9 +1,10 @@
 body {
     margin: 0;
-    background-color: aqua;
 }
 
-#barestho-widget {
+/* Widget toggle view */
+
+#barestho-widget-toggle {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -19,7 +20,7 @@ body {
 }
 
 @media (max-width: 450px) {
-    #barestho-widget {
+    #barestho-widget-toggle {
         width: 100%;
         min-height: 100vh;
         box-shadow: none;
@@ -31,3 +32,46 @@ body {
         z-index: 9999;
     }
 }
+
+
+/* Widget iframe view */
+
+#barestho-widget-iframe {
+    height: 500px;
+    width: 360px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+
+
+/* élément inutile */ 
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 483px);
+    grid-gap: 10px;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+}
+
+.item1 { background-color: red; height: 250px;
+ }
+.item2 { background-color: green; height: 250px;
+ }
+.item3 { background-color: blue ; height: 250px
+ }
+.item4 { background-color: white; padding: 30px;
+ }
+.item5 { background-color: orange; height: 570px;
+ }
+.item6 { background-color: pink; padding: 30px;
+ }

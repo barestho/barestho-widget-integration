@@ -1,12 +1,5 @@
-function onToggle() {
-    const widget = document.querySelector("#barestho-widget-container");
-    const button = document.querySelector("#barestho-button");
-    widget.classList.toggle('open');
-    button.innerHTML = widget.classList.contains('open')? "Fermer": "Réserver";
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    const iframe = document.getElementById('barestho-widget');
+    const iframe = document.getElementById('barestho-widget-toggle');
     const iframeSrc = iframe.src;
     const url = new URL(iframeSrc);
     const iframeOrigin = url.origin;
