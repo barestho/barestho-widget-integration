@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    height: 7000px;
+    background-color: red;
 }
 
 /* Widget toggle view */
@@ -44,7 +46,23 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+/* TEST : Widget popup view */
 
+#barestho-widget-popup {
+    font-family: 'Poppins', 'Ubuntu', 'sans-serif';
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    width: 370px;
+    max-height: 95%;
+    z-index: 9999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 /* élément inutile */ 
