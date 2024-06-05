@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    height: 7000px;
     background-color: red;
+        height: 8000px;
 }
 
 /* Widget toggle view */
@@ -35,7 +35,6 @@ body {
     }
 }
 
-
 /* Widget iframe view */
 
 #barestho-widget-iframe {
@@ -46,7 +45,19 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-/* TEST : Widget popup view */
+/* Widget popup view */
+
+#barestho-widget-popup-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000db;
+    position: fixed;
+    z-index: 9999;
+}
 
 #barestho-widget-popup {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
@@ -55,14 +66,73 @@ body {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: none;
-    width: 370px;
+    width: 420px;
+    height: 700px;
     max-height: 95%;
-    z-index: 9999;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
 }
+
+#barestho-popup-iframe {
+    width: 420px;
+    height: 660px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: white;
+    border: none;
+}
+
+#barestho-button-toggle {
+    background-color: white;
+    border: none;
+    color: #252332;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 450px) {
+    #barestho-widget-popup {
+        width: 100%;
+        min-height: 100vh;
+        box-shadow: none;
+        right: 0;
+        bottom: 0;
+        border-radius: 0px;
+        overflow: auto;
+        position: fixed;
+    }
+    #barestho-popup-iframe {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    #barestho-button-toggle {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+}
+
+
+
+/* fin de test
 
 
 /* élément inutile */ 

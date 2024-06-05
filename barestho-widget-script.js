@@ -29,3 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+function BaresthoToggleIframe() {
+    const iframeContainer = document.getElementById('barestho-widget-popup-container');
+    if (iframeContainer.style.display === 'none' || !iframeContainer.style.display) {
+        iframeContainer.style.display = 'block';
+    } else {
+        iframeContainer.style.display = 'none';
+    }
+}
