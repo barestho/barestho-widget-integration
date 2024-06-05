@@ -10,7 +10,7 @@
     bottom: 15px;
     right: 15px;
     border: none;
-    width: 360px;
+    width: 370px;
     max-height: 95%;
     z-index: 9999;
 }
@@ -50,7 +50,7 @@
     width: 100vw;
     background-color: #000000db;
     position: fixed;
-    z-index: 9999;
+    z-index: 99999;
 }
 
 #barestho-widget-popup {
