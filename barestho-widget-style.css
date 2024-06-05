@@ -13,6 +13,7 @@
     width: 370px;
     max-height: 95%;
     z-index: 9999;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 450px) {
