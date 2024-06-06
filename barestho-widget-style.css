@@ -19,7 +19,6 @@
 @media (max-width: 450px) {
     #barestho-widget-toggle {
         width: 100%;
-        min-height: 100vh;
         box-shadow: none;
         right: 0;
         bottom: 0;
