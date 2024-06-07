@@ -64,3 +64,39 @@ function BaresthoToggleIframe() {
         iframeContainer.style.display = 'none';
     }
 }
+
+
+
+
+
+/*  Réception du bouton de la croix pour fermer le widget en modep popup */
+
+let isButtonClicked;
+
+
+function adjustStyles() {
+  const popupContainer = document.getElementById('barestho-widget-popup-container');
+  if (isButtonClicked === false) {
+      popupContainer.style.display = 'block';
+      isButtonClicked = true;
+  } else {
+    popupContainer.style.display = 'none';
+    isButtonClicked = false;
+  }
+}
+
+window.addEventListener('message', function(event) {
+  const iframe = document.getElementById('barestho-popup-iframe');
+  if (event.source === iframe.contentWindow) {
+      const newButtonClickedState = event.data.buttonClicked;
+
+      if (newButtonClickedState !== undefined && newButtonClickedState !== isButtonClicked) {
+          isButtonClicked = newButtonClickedState;
+          adjustStyles();
+      }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  adjustStyles();
+});
