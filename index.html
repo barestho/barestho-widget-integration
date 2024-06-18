@@ -8,8 +8,6 @@
     <title>Widget</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
-
-        <!-- CDN -->
         
         <link href="barestho-widget-style.css" rel="stylesheet">
         <script src="barestho-widget-script.js" defer></script>
@@ -18,40 +16,19 @@
 
 <body>
 
-    <iframe id="barestho-widget-toggle" src="http://barestho.reservation.barestho.com/?view=toggle&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
+                <iframe id="barestho-widget-toggle" src="http://localhost:3001/?view=toggle&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
 
-                <!-- <div class="grid-container">
-                    <div class="grid-item item1">Réserver votre table</div>
-                    <div class="grid-item item2">Réserver votre table</div>
-                    <div class="grid-item item3"></div>
-                    <div class="grid-item item4"> 
-                        <iframe id="barestho-widget-iframe" src="http://localhost:3001/?view=widget&primary-color=%23FF6B1A&barestho-alternate=false" frameborder="0"></iframe>
-                    </div>
-                    <div class="grid-item item5">
-                        <iframe id="barestho-widget-iframe" src="http://localhost:3001/?view=widget&primary-color=%23BE2FDB&barestho-alternate=false" frameborder="0"></iframe>
-                    </div>
-                    <div class="grid-item item6">
-                    
-                    </div>
-                </div> -->
-
-                <!-- <button onclick="BaresthoToggleIframe()">Toggle Iframe</button> -->
-
-                <div id="barestho-widget-popup-container" style="display: none;">
-                    <div id="barestho-widget-popup">
-                    <iframe id="barestho-popup-iframe" src="https://barestho.reservation.barestho.com/?view=toggle&primary-color=%23DC0044&secondary-color=%23252332&barestho-logo=%23DC0044&barestho-alternate=true" frameborder="0"></iframe>
-                    </div>
-                    </div>
-
-
+                
                 <iframe id="barestho-widget-iframe" src="http://localhost:3001/?view=widget&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
 
-                <!-- <div id="barestho-widget-popup-container" style="display: none;">
+                
+                <button onclick="BaresthoToggleIframe()">Toggle Iframe</button>
+                <div id="barestho-widget-popup-container" style="display: none;">
                     <div id="barestho-widget-popup">
-                        <iframe id="barestho-popup-iframe" src="http://localhost:3001/?view=toggle&primary-color=%23DC0044&secondary-color=%23252332&barestho-logo=%23DC0044&barestho-alternate=true" frameborder="0"></iframe>
+                        <iframe id="barestho-popup-iframe" src="http://localhost:3001/?view=popupview&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
                     </div>
                 </div>
-                 -->
+                
             
 </body>
 
