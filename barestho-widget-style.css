@@ -32,7 +32,7 @@
 /* Widget iframe view */
 
 #barestho-widget-iframe {
-    height: 500px;
+    height: 550px;
     width: 360px;
     border-radius: 20px;
     background-color: white;
@@ -60,8 +60,6 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: none;
-    width: 420px;
-    height: 700px;
     max-height: 95%;
     position: fixed;
     left: 50%;
@@ -75,7 +73,7 @@
 
 #barestho-popup-iframe {
     width: 420px;
-    height: 660px;
+    height: 700px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
