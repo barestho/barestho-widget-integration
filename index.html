@@ -18,8 +18,7 @@
 
 <body>
 
-                <iframe id="barestho-widget-toggle" src="http://localhost:3001/?view=toggle&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF"
-                frameborder="0"></iframe>
+    <iframe id="barestho-widget-toggle" src="http://barestho.reservation.barestho.com/?view=toggle&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
 
                 <!-- <div class="grid-container">
                     <div class="grid-item item1">Réserver votre table</div>
@@ -36,14 +35,23 @@
                     </div>
                 </div> -->
 
-                <button onclick="BaresthoToggleIframe()">Toggle Iframe</button>
+                <!-- <button onclick="BaresthoToggleIframe()">Toggle Iframe</button> -->
 
                 <div id="barestho-widget-popup-container" style="display: none;">
+                    <div id="barestho-widget-popup">
+                    <iframe id="barestho-popup-iframe" src="https://barestho.reservation.barestho.com/?view=toggle&primary-color=%23DC0044&secondary-color=%23252332&barestho-logo=%23DC0044&barestho-alternate=true" frameborder="0"></iframe>
+                    </div>
+                    </div>
+
+
+                <iframe id="barestho-widget-iframe" src="http://localhost:3001/?view=widget&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
+
+                <!-- <div id="barestho-widget-popup-container" style="display: none;">
                     <div id="barestho-widget-popup">
                         <iframe id="barestho-popup-iframe" src="http://localhost:3001/?view=toggle&primary-color=%23DC0044&secondary-color=%23252332&barestho-logo=%23DC0044&barestho-alternate=true" frameborder="0"></iframe>
                     </div>
                 </div>
-                
+                 -->
             
 </body>
 
