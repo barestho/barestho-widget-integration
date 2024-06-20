@@ -1,31 +1,31 @@
 /* Reception and detection if we click on the reserve button in the react + iframe project */
 
-let buttonClicked = false;
+let isToggleOpen = false;
 
-function updateStyles() {
+function updateToggleStyles() {
   const widgetToggle = document.getElementById('barestho-widget-toggle');
   
   if (window.innerWidth < 450) {
-    widgetToggle.style.minHeight = buttonClicked ? '100vh' : '56px';
+    widgetToggle.style.minHeight = isToggleOpen ? '100vh' : '56px';
   }
 }
 
 window.addEventListener('message', function(event) {
   const iframe = document.getElementById('barestho-widget-toggle');
   if (event.source === iframe.contentWindow) {
-    if (event.data.type === "buttonClicked") {
-      const newButtonClicked = event.data.payload.buttonClicked;
+    if (event.data.type === "toggleState") {
+      const toggleState = event.data.payload.toggleState;
       
-      if (newButtonClicked !== undefined && newButtonClicked !== buttonClicked) {
-        buttonClicked = newButtonClicked;
-        updateStyles();
+      if (toggleState !== undefined && toggleState !== isToggleOpen) {
+        isToggleOpen = toggleState;
+        updateToggleStyles();
       }
     }
   }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  updateStyles();
+  updateToggleStyles();
 });
 
 /* Receiving and detecting iframe size and content */
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Manage the iframe display alone */
 
-function BaresthoToggleIframe() {
+function baresthoToggleIframe() {
     const iframeContainer = document.getElementById('barestho-widget-popup-container');
     if (iframeContainer.style.display === 'none' || !iframeContainer.style.display) {
         iframeContainer.style.display = 'block';
@@ -63,7 +63,7 @@ function BaresthoToggleIframe() {
 
 let isPopupOpen;
 
-function adjustStyles() {
+function updatePopUpStyles() {
   const popupContainer = document.getElementById('barestho-widget-popup-container');
   if (isPopupOpen === false) {
       popupContainer.style.display = 'block';
@@ -77,17 +77,17 @@ function adjustStyles() {
 window.addEventListener('message', function(event) {
   const iframe = document.getElementById('barestho-popup-iframe');
   if (event.source === iframe.contentWindow) {
-    if (event.data.type === "buttonClicked") {
-      const newButtonClickedState = event.data.payload.buttonClicked;
+    if (event.data.type === "popUpState") {
+      const popUpState = event.data.payload.popUpState;
 
-      if (newButtonClickedState !== undefined && newButtonClickedState !== isPopupOpen) {
-          isPopupOpen = newButtonClickedState;
-          adjustStyles();
+      if (popUpState !== undefined && popUpState !== isPopupOpen) {
+          isPopupOpen = popUpState;
+          updatePopUpStyles();
       }
     }
   }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  adjustStyles();
+  updatePopUpStyles();
 });
