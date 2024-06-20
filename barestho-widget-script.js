@@ -1,28 +1,22 @@
 /* Reception and detection if we click on the reserve button in the react + iframe project */
 
-let buttonClicked = false;
+let isToggleOpen= false;
 
 function updateStyles() {
   const widgetToggle = document.getElementById('barestho-widget-toggle');
   
   if (window.innerWidth < 450) {
-    if (buttonClicked) {
-      widgetToggle.style.minHeight = '100vh';
-      console.log("oui");
-    } else {
-      widgetToggle.style.minHeight = '56px';
-      console.log("non");
-    }
+    widgetToggle.style.minHeight = isToggleOpen? '100vh' : '56px';
   }
 }
 
 window.addEventListener('message', function(event) {
   const iframe = document.getElementById('barestho-widget-toggle');
   if (event.source === iframe.contentWindow) {
-    const newButtonClicked = event.data.buttonClicked;
+    const newIsToggleOpen= event.data.buttonClicked;
     
-    if (newButtonClicked !== undefined && newButtonClicked !== buttonClicked) {
-      buttonClicked = newButtonClicked;
+    if (newIsToggleOpen!== undefined && newIsToggleOpen!== buttonClicked) {
+      isToggleOpen= newButtonClicked;
       updateStyles();
     }
   }
@@ -71,17 +65,17 @@ function BaresthoToggleIframe() {
 
 /*  Réception du bouton de la croix pour fermer le widget en modep popup */
 
-let isButtonClicked;
+let isPopupOpen;
 
 
 function adjustStyles() {
   const popupContainer = document.getElementById('barestho-widget-popup-container');
-  if (isButtonClicked === false) {
+  if (isPopupOpen === false) {
       popupContainer.style.display = 'block';
-      isButtonClicked = true;
+      isPopupOpen = true;
   } else {
     popupContainer.style.display = 'none';
-    isButtonClicked = false;
+    isPopupOpen = false;
   }
 }
 
@@ -90,8 +84,8 @@ window.addEventListener('message', function(event) {
   if (event.source === iframe.contentWindow) {
       const newButtonClickedState = event.data.buttonClicked;
 
-      if (newButtonClickedState !== undefined && newButtonClickedState !== isButtonClicked) {
-          isButtonClicked = newButtonClickedState;
+      if (newButtonClickedState !== undefined && newButtonClickedState !== isPopupOpen) {
+          isPopupOpen = newButtonClickedState;
           adjustStyles();
       }
   }

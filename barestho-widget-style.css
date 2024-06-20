@@ -1,5 +1,9 @@
 /* Widget toggle view */
 
+body {
+    background-color: black;
+}
+
 #barestho-widget-toggle {
     font-family: 'Poppins', 'Ubuntu', 'sans-serif';
     border-top-left-radius: 20px;
