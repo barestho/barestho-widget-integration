@@ -51,6 +51,7 @@
     background-color: #000000db;
     position: fixed;
     z-index: 99999;
+    display: none;
 }
 
 #barestho-popup-iframe {
