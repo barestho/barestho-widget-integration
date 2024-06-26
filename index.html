@@ -10,26 +10,27 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap"
             rel="stylesheet">
 
-        <link href="barestho-style.css" rel="stylesheet">
-        <script src="barestho-script.js" defer></script>
+        <link href="style-barestho.css" rel="stylesheet">
+        <script src="script-barestho.js" defer></script>
 
     </head>
 
     <body>
 
-        <iframe id="barestho-widget-toggle" src="http://localhost:3001/?view=toggle&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF" frameborder="0"></iframe>
+        <iframe id="barestho-widget-toggle" src="http://localhost:3001/?view=toggle" frameborder="0"></iframe>
 
         <iframe id="barestho-widget-iframe"
-            src="http://localhost:3001/?view=widget&primary-color=%23DC0044&barestho-logo=%23252332&barestho-alternate=false&secondary-color=%23FFFFFF"
+            src="http://localhost:3001/?view=widget"
             frameborder="0"></iframe>
 
         <button onclick="baresthoToggleIframe()">Toggle Iframe</button>
 
         <div id="barestho-widget-popup-container">
                 <iframe id="barestho-popup-iframe"
-                    src="http://localhost:3001/?view=popupview&primary-color=%23DC0044&secondary-color=%23252332&barestho-logo=%23DC0044&barestho-alternate=true"
+                    src="http://localhost:3001/?view=popup"
                     frameborder="0"></iframe>
         </div>
+
     </body>
 
 </html>
