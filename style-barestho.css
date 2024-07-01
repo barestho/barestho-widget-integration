@@ -27,12 +27,15 @@
         position: fixed;
         z-index: 9999;
     }
+    #barestho-widget-iframe {
+        height: 670px !important;
+    }
 }
 
 /* Widget iframe view */
 
 #barestho-widget-iframe {
-    height: 650px;
+    height: 600px;
     max-width: 370px;
     width: 100%;
     border-radius: 20px;
