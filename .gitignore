@@ -1,2 +1,5 @@
-.html
+# Ignorer tous les fichiers HTML
+*.html
+
+# Ignorer le fichier .DS_Store spécifique à macOS
 .DS_Store
