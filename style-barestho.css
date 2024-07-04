@@ -15,6 +15,13 @@
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@media (min-width: 450px) {
+    #barestho-widget-toggle {
+   max-height: 90%;
+    }
+
+}
+
 @media (max-width: 450px) {
     #barestho-widget-toggle {
         width: 100%;
