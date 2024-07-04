@@ -6,7 +6,7 @@ function updateToggleStyles() {
   const widgetToggle = document.getElementById('barestho-widget-toggle');
   
   if (window.innerWidth < 450) {
-    widgetToggle.style.minHeight = isToggleOpen ? '100%' : '56px';
+    widgetToggle.style.height = isToggleOpen ? '100%' : '56px';
   }
 }
 
