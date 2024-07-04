@@ -7,6 +7,7 @@ function updateToggleStyles() {
   
   if (window.innerWidth < 450) {
     widgetToggle.style.height = isToggleOpen ? '100%' : '56px';
+    document.body.style.overflow = isToggleOpen ? 'hidden' : ''; 
   }
 }
 
