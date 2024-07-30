@@ -106,10 +106,10 @@ window.addEventListener('message', function(event) {
                     isToggleOpen[id] = toggleState;
                     updateToggleStyles(id);
                 }
-            } else if (event.data.type === "popUpState") {
-                const popUpState = event.data.payload.popUpState;
-                if (popUpState !== undefined && popUpState !== isPopupOpen[id]) {
-                    isPopupOpen[id] = popUpState;
+            } else if (event.data.type === "popup") {
+                const popup = event.data.payload.popup;
+                if (!popup !== undefined && popup !== isPopupOpen[id]) {
+                    isPopupOpen[id] = popup;
                     updatePopUpStyles(id);
                 }
             }
