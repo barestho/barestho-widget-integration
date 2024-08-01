@@ -26,7 +26,7 @@ class BaresthoWidgetManager {
   /**
    * @param {"create" | "remove"} action 
    */
-  managePopupBackground(action) {
+  managePopupBackground = (action) => {
     const backgroundDiv = document.getElementById(BARESTHO_BACKGROUND_POPUP_ID);
     if (action === 'create' && !backgroundDiv) {
       const newBackgroundDiv = document.createElement('div');
@@ -42,7 +42,7 @@ class BaresthoWidgetManager {
   /**
    * @param {string} id 
    */
-  openPopup(id) {
+  openPopup= (id) => {
     const widget = document.querySelector(`.${BARESTHO_WIDGET_ID}.${BARESTHO_WIDGET_VIEW_MODES.POPUP}#${id}`);
     widget?.classList.add("open");
     this.managePopupBackground('create');
@@ -53,7 +53,7 @@ class BaresthoWidgetManager {
    * @param {MessageEvent<{ type: string, payload: any }>} e 
    * @param {HTMLIFrameElement} widget 
    */
-  handleMessage(e, widget) {
+  handleMessage = (e, widget) => {
     const { type, payload } = e.data;
   
     switch(type) {
@@ -79,7 +79,7 @@ class BaresthoWidgetManager {
     }
   }
 
-  main() {
+  main = () => {
     const widgets = document.querySelectorAll(`.${BARESTHO_WIDGET_ID}`);
 
     for (const widget of widgets) {
