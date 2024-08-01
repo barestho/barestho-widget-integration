@@ -1,0 +1,47 @@
+.barestho-widget {
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 600px;
+    max-width: 370px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.barestho-widget.popup {
+    display: none;
+}
+
+.barestho-widget.popup.open {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 85%;
+    height: 85%;
+}
+
+/* Styles pour le conteneur de fond */
+#background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000db;
+    z-index: 9998;
+}
+
+
+
+
+
+/* Responsive */
+
+@media (max-width: 450px) {
+    .barestho-widget.in-page {
+        height: 645px !important;
+    }
+}
