@@ -22,9 +22,21 @@ const WIDGET_VIEW_MODES = {
 
 // Main
 
+function manageBackground(action) {
+  const backgroundDiv = document.getElementById('background-overlay');
+  if (action === 'create' && !backgroundDiv) {
+    const newBackgroundDiv = document.createElement('div');
+    newBackgroundDiv.id = 'background-overlay';
+    document.body.appendChild(newBackgroundDiv);
+  } else if (action === 'remove' && backgroundDiv) {
+    backgroundDiv.remove();
+  }
+}
+
 function openPopup(id) {
   const widget = document.querySelector(`.${WIDGET_ID}.${WIDGET_VIEW_MODES.POPUP}#${id}`);
   widget?.classList.add("open");
+  manageBackground('create');
 }
 
 /**
@@ -38,6 +50,7 @@ function handleMessage(e, widget) {
   switch(type) {
     case "popup": {
       widget.classList.remove("open");
+      manageBackground('remove');
       break;
     }
     case "toggle": {
