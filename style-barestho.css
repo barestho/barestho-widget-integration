@@ -1,70 +1,18 @@
-/* Widget toggle view */
-
-#barestho-widget-toggle {
-    font-family: 'Poppins', 'Ubuntu', 'sans-serif';
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
+.barestho-widget.in-page {
     border: none;
-    width: 370px;
-    z-index: 9999;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (min-width: 450px) {
-    #barestho-widget-toggle {
-   max-height: 90%;
-    }
-
-}
-
-@media (max-width: 450px) {
-    #barestho-widget-toggle {
-        width: 100%;
-        box-shadow: none;
-        right: 0;
-        bottom: 0;
-        border-radius: 0px;
-        overflow: auto;
-        position: fixed;
-        z-index: 9999;
-    }
-    #barestho-widget-iframe {
-        height: 645px !important;
-    }
-}
-
-/* Widget iframe view */
-
-#barestho-widget-iframe {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     height: 600px;
     max-width: 370px;
     width: 100%;
     border-radius: 20px;
     background-color: white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-/* Widget popup view */
-
-.barestho-widget-popup-container {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #000000db;
-    position: fixed;
-    z-index: 99999;
+.barestho-widget.popup {
     display: none;
 }
 
-.barestho-popup-iframe {
+.barestho-widget.popup.open {
     width: 370px;
     height: 700px;
     border-top-left-radius: 20px;
@@ -88,25 +36,54 @@
     flex-direction: column;
     justify-content: center;
     align-items: end;
+    display: block;
+    z-index: 9999;
 }
 
-#barestho-button-toggle {
-    background-color: white;
+#background-overlay-barestho{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000db;
+    z-index: 9998;
+}
+
+.barestho-widget.toggle{
+    font-family: 'Poppins', 'Ubuntu', 'sans-serif';
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
     border: none;
-    color: #252332;
-    padding: 7px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 370px;
+    z-index: 9999;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Responsive styles */
+.barestho-widget.toggle.open {
+    height: 100% !important;
+}
+
+
+/* Responsive */
+
+
+@media (min-width: 450px) {
+    .barestho-widget.toggle {
+        max-height: 90%;
+         }
+}
+
 @media (max-width: 450px) {
-    .barestho-popup-iframe {
+    .barestho-widget.in-page {
+        height: 645px !important;
+    }
+    .barestho-widget.popup.open {
         width: 100%;
         height: 100%;
         border-top-left-radius: 0px;
@@ -122,8 +99,14 @@
         overflow: auto;
         position: fixed;
     }
-    #barestho-button-toggle {
-        margin-right: 10px;
-        cursor: pointer;
+    .barestho-widget.toggle  {
+        width: 100%;
+        box-shadow: none;
+        right: 0;
+        bottom: 0;
+        border-radius: 0px;
+        overflow: auto;
+        position: fixed;
+        z-index: 9999;
     }
 }
