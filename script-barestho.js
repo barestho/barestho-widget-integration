@@ -33,10 +33,10 @@ function buildWidgetSelector(mode) {
 /**
  * Return the iframe element of the widget depending on its mode.
  * @param {keyof WIDGET_VIEW_MODES} mode 
- * @returns {HTMLIFrameElement | Element | null}
+ * @returns {NodeListOf<Element>}
  */
-function getWidgetElement(mode) {
-  return document.querySelector(buildWidgetSelector(mode));
+function getWidgetElements(mode) {
+  return document.querySelectorAll(buildWidgetSelector(mode));
 }
 
 
@@ -114,7 +114,7 @@ window.addEventListener('message', function (event) {
 
 function loadToggleMode() {
 
-  const widget = getWidgetElement("TOGGLE");
+  const widget = getWidgetElements("TOGGLE");
   const widgetOrigin = new URL(widget.src).origin;
 
   if (!widget)
@@ -154,6 +154,16 @@ function loadPopupMode() {
   }
 }
 
+/**
+ * Handles iframe messsages.
+ * @param {MessageEvent<any>} e 
+ * @param {HTMLIFrameElement} widget 
+ */
+function handleMessage(e, widget) {
+  console.log(widget === undefined);
+  
+}
+
 
 /*
   Modes:
@@ -165,8 +175,31 @@ function loadPopupMode() {
 
 
 function main() {
-  loadPopupMode();
-  loadToggleMode();
+  // loadPopupMode();
+  // loadToggleMode();
+
+  const widgets = document.querySelectorAll(`.${WIDGET_ID}`);
+
+  for (const widget of widgets) {
+    const src = widget.getAttribute("src");
+
+    const srcUrl = new URL(src);
+
+    const widgetMode = srcUrl.searchParams.get("view") ?? WIDGET_VIEW_MODES.STANDALONE;
+
+    widget.classList.add(widgetMode);
+  }
+
+  // Message dispatcher
+  window.addEventListener("message", e => {
+    const { source } = e;
+
+    const foundWidget = [...widgets].find(widget => widget.contentWindow === source);
+    
+    if(foundWidget !== undefined) {
+      handleMessage(e, foundWidget);
+    }
+  });
 
 }
 
