@@ -1,127 +1,174 @@
-let isToggleOpen = false;
+// Notes
 
-function updateToggleStyles() {
-  const widgetToggle = document.getElementById('barestho-widget-toggle');
+/*
+  Widget iframe element must have this id and class name pattern:
+    => <iframe class="barestho-widget [mode] [restaurant]"></iframe>
   
-  if (window.innerWidth < 450) {
-    widgetToggle.style.height = isToggleOpen ? '100%' : '56px';
-    document.body.style.overflow = isToggleOpen ? 'hidden' : ''; 
-  }
+  So it can be found with ease, such as this example where we search a widget in popup mode:
+    => <iframe class="barestho-widget popup masu"></iframe> result of "iframe.barestho-widget.popup.masu".
+*/
+
+// Constants
+
+const WIDGET_ID = "barestho-widget";
+
+const WIDGET_VIEW_MODES = {
+  STANDALONE: "standalone",
+  INPAGE: "in-page",
+  TOGGLE: "toggle",
+  POPUP: "popup",
 }
 
-window.addEventListener('message', function(event) {
-  const iframe = document.getElementById('barestho-widget-toggle');
-  if (event.source === iframe.contentWindow) {
-    if (event.data.type === "toggleState") {
-      const toggleState = event.data.payload.toggleState;
-      
-      if (toggleState !== undefined && toggleState !== isToggleOpen) {
-        isToggleOpen = toggleState;
-        updateToggleStyles();
-      }
-    }
-  }
-});
+// Utils
 
-document.addEventListener('DOMContentLoaded', function() {
-  updateToggleStyles();
-});
+/**
+ * Return the CSS selector of the widget depending on its mode.
+ * @param {keyof WIDGET_VIEW_MODES} mode 
+ * @returns 
+ */
+function buildWidgetSelector(mode) {
+  return `iframe.${WIDGET_ID}.${WIDGET_VIEW_MODES[mode] ?? WIDGET_VIEW_MODES.STANDALONE}`;
+}
+
+/**
+ * Return the iframe element of the widget depending on its mode.
+ * @param {keyof WIDGET_VIEW_MODES} mode 
+ * @returns {HTMLIFrameElement | Element | null}
+ */
+function getWidgetElement(mode) {
+  return document.querySelector(buildWidgetSelector(mode));
+}
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.innerWidth >= 481) {
-    const iframe = document.getElementById('barestho-widget-toggle');
-    const iframeSrc = iframe.src;
-    const url = new URL(iframeSrc);
-    const iframeOrigin = url.origin;
-
-    window.addEventListener('message', function(event) {
-      if (event.origin === iframeOrigin && event.data.type === "resize") {
-        const data = event.data.payload;
-        if (data.height) {
-          iframe.style.height = data.height + 'px';
-        }
-      }
-    });
-  }
-});
-
+// Main
 
 let isPopupOpen = {};
 
 function baresthoToggleIframe(id) {
   if (!id) {
-      id = '1';
+    id = '1';
   }
 
   const iframeContainer = document.getElementById(`barestho-widget-popup-container-${id}`)
-      || document.getElementById('barestho-widget-popup-container');
+    || document.getElementById('barestho-widget-popup-container');
 
   if (iframeContainer) {
-      if (iframeContainer.style.display === 'none' || !iframeContainer.style.display) {
-          iframeContainer.style.display = 'block';
-          document.body.style.overflow = 'hidden'; 
-      } else {
-          iframeContainer.style.display = 'none';
-          document.body.style.overflow = ''; 
-      }
+    if (iframeContainer.style.display === 'none' || !iframeContainer.style.display) {
+      iframeContainer.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    } else {
+      iframeContainer.style.display = 'none';
+      document.body.style.overflow = '';
+    }
   } else {
-      console.error(`Container with id barestho-widget-popup-container-${id} not found.`);
+    console.error(`Container with id barestho-widget-popup-container-${id} not found.`);
   }
 }
 
 
 
 function updatePopUpStyles(id) {
-    if (!id) {
-        id = '1';
-    }
-    const popupContainer = document.getElementById(`barestho-widget-popup-container-${id}`)
-        || document.getElementById('barestho-widget-popup-container');
+  if (!id) {
+    id = '1';
+  }
+  const popupContainer = document.getElementById(`barestho-widget-popup-container-${id}`)
+    || document.getElementById('barestho-widget-popup-container');
 
-    if (popupContainer) {
-        if (isPopupOpen[id] === false) {
-            popupContainer.style.display = 'block';
-            document.body.style.overflow = 'hidden'; 
-            isPopupOpen[id] = true;
-        } else {
-            popupContainer.style.display = 'none';
-            document.body.style.overflow = ''; 
-            isPopupOpen[id] = false;
-        }
+  if (popupContainer) {
+    if (isPopupOpen[id] === false) {
+      popupContainer.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      isPopupOpen[id] = true;
     } else {
-        console.error(`Container with id barestho-widget-popup-container-${id} not found.`);
+      popupContainer.style.display = 'none';
+      document.body.style.overflow = '';
+      isPopupOpen[id] = false;
     }
+  } else {
+    console.error(`Container with id barestho-widget-popup-container-${id} not found.`);
+  }
 }
 
 
-window.addEventListener('message', function(event) {
-    const iframes = document.querySelectorAll('.barestho-popup-iframe');
-    iframes.forEach(iframe => {
-        if (event.source === iframe.contentWindow) {
-            const id = iframe.id.split('-').pop();
-            if (event.data.type === "toggleState") {
-                const toggleState = event.data.payload.toggleState;
-                if (toggleState !== undefined && toggleState !== isToggleOpen[id]) {
-                    isToggleOpen[id] = toggleState;
-                    updateToggleStyles(id);
-                }
-            } else if (event.data.type === "popup") {
-                const popup = event.data.payload.popup;
-                if (!popup !== undefined && popup !== isPopupOpen[id]) {
-                    isPopupOpen[id] = popup;
-                    updatePopUpStyles(id);
-                }
-            }
+window.addEventListener('message', function (event) {
+  const iframes = document.querySelectorAll('.barestho-popup-iframe');
+  iframes.forEach(iframe => {
+    if (event.source === iframe.contentWindow) {
+      const id = iframe.id.split('-').pop();
+      if (event.data.type === "toggleState") {
+        const toggleState = event.data.payload.toggleState;
+        if (toggleState !== undefined && toggleState !== isToggleOpen[id]) {
+          isToggleOpen[id] = toggleState;
+          updateToggleStyles(id);
         }
-    });
+      } else if (event.data.type === "popUpState") {
+        const popUpState = event.data.payload.popUpState;
+        if (popUpState !== undefined && popUpState !== isPopupOpen[id]) {
+          isPopupOpen[id] = popUpState;
+          updatePopUpStyles(id);
+        }
+      }
+    }
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const iframes = document.querySelectorAll('.barestho-popup-iframe');
-    iframes.forEach(iframe => {
-        const id = iframe.id.split('-').pop();
-        updateToggleStyles(id);
-        updatePopUpStyles(id);
-    });
-});
+function loadToggleMode() {
+
+  const widget = getWidgetElement("TOGGLE");
+  const widgetOrigin = new URL(widget.src).origin;
+
+  if (!widget)
+    return;
+
+  // Messages handler
+  window.addEventListener("message", ({ data, origin, source }) => {
+
+    const { payload, type } = data;
+    const isSameOrigin = origin === widgetOrigin;
+    const isSameWindow = source === widget.contentWindow;
+
+    switch(type) {
+      case "resize": {
+        if(payload.height && isSameOrigin && window.innerWidth >= 481)
+          widget.style.height = `${payload.height}px`;    
+        break;
+      }
+      case "toggle": {
+        if(isSameWindow)
+          widget.classList.toggle("open");
+        break;
+      }
+      default:
+        break;
+    }
+  });
+}
+
+function loadPopupMode() {
+  const iframes = document.querySelectorAll('.barestho-popup-iframe');
+
+  for (const iframe of iframes) {
+    const id = iframe.id.split('-').pop();
+    updateToggleStyles(id);
+    updatePopUpStyles(id);
+  }
+}
+
+
+/*
+  Modes:
+    - standalone (default): just the reservation app without any mode applied.
+    - toggle: a short version of the form with a button that hides and displays it.
+    - popup: a short version of the form with logic to display a modal like view. It requires more config.
+    - inpage: a short version of the form.
+*/
+
+
+function main() {
+  loadPopupMode();
+  loadToggleMode();
+
+}
+
+// main is executed if DOM is fully loaded.
+document.addEventListener('DOMContentLoaded', main);
