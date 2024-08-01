@@ -82,13 +82,12 @@ function main() {
 
   // Message dispatcher
   window.addEventListener("message", e => {
-    const { source } = e;
 
-    const foundWidget = Array.from(widgets).find(widget => widget.contentWindow === source);
+    const foundWidget = Array.from(widgets)
+      .find(widget => widget.contentWindow === e.source);
 
-    if(foundWidget !== undefined) {
+    if(foundWidget)
       handleMessage(e, foundWidget);
-    }
   });
 
 }
