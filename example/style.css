@@ -108,3 +108,6 @@
     }
 }
 
+.barestho-widget.toggle.open {
+    height: 100% !important;
+}

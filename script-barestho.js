@@ -50,12 +50,14 @@ function handleMessage(e, widget) {
   switch(type) {
     case "popup": {
       widget.classList.remove("open");
-      manageBackground('remove');
+      manageBackground('remove'); 
       break;
     }
     case "toggle": {
       const isOpen = payload.state ?? false;
-      
+      if (isOpen && window.innerWidth < 450) {
+        widget.classList.add("open")
+      } else widget.classList.remove("open");
       break;
     }
     case "resize": {
