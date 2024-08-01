@@ -10,9 +10,9 @@
 
 // Constants
 
-const WIDGET_ID = "barestho-widget";
+const BARESTHO_WIDGET_ID = "barestho-widget";
 
-const WIDGET_VIEW_MODES = {
+const BARESTHO_WIDGET_VIEW_MODES = {
   STANDALONE: "standalone",
   INPAGE: "in-page",
   TOGGLE: "toggle",
@@ -20,23 +20,24 @@ const WIDGET_VIEW_MODES = {
 }
 
 
-// Main
+// baresthoMain
 
-function manageBackground(action) {
+function baresthoManageBackgroundPopUp(action) {
   const backgroundDiv = document.getElementById('background-overlay-barestho');
   if (action === 'create' && !backgroundDiv) {
     const newBackgroundDiv = document.createElement('div');
     newBackgroundDiv.id = 'background-overlay-barestho';
     document.body.appendChild(newBackgroundDiv);
+    document.body.style.overflow = 'hidden'; 
   } else if (action === 'remove' && backgroundDiv) {
     backgroundDiv.remove();
+    document.body.style.overflow = ''; 
   }
 }
-
-function openPopup(id) {
-  const widget = document.querySelector(`.${WIDGET_ID}.${WIDGET_VIEW_MODES.POPUP}#${id}`);
+function baresthoOpenPopup(id) {
+  const widget = document.querySelector(`.${BARESTHO_WIDGET_ID}.${BARESTHO_WIDGET_VIEW_MODES.POPUP}#${id}`);
   widget?.classList.add("open");
-  manageBackground('create');
+  baresthoManageBackgroundPopUp('create');
 }
 
 /**
@@ -44,13 +45,13 @@ function openPopup(id) {
  * @param {MessageEvent<{ type: string, payload: any }>} e 
  * @param {HTMLIFrameElement} widget 
  */
-function handleMessage(e, widget) {  
+function baresthoHandleMessage(e, widget) {  
   const { type, payload } = e.data;
   
   switch(type) {
     case "popup": {
       widget.classList.remove("open");
-      manageBackground('remove'); 
+      baresthoManageBackgroundPopUp('remove'); 
       break;
     }
     case "toggle": {
@@ -81,16 +82,16 @@ function handleMessage(e, widget) {
 */
 
 
-function main() {
+function baresthoMain() {
 
-  const widgets = document.querySelectorAll(`.${WIDGET_ID}`);
+  const widgets = document.querySelectorAll(`.${BARESTHO_WIDGET_ID}`);
 
   for (const widget of widgets) {
     const src = widget.getAttribute("src");
 
     const srcUrl = new URL(src);
 
-    const widgetMode = srcUrl.searchParams.get("view") ?? WIDGET_VIEW_MODES.STANDALONE;
+    const widgetMode = srcUrl.searchParams.get("view") ?? BARESTHO_WIDGET_VIEW_MODES.STANDALONE;
 
     widget.classList.add(widgetMode);
   }
@@ -102,10 +103,10 @@ function main() {
       .find(widget => widget.contentWindow === e.source);
 
     if(foundWidget)
-      handleMessage(e, foundWidget);
+      baresthoHandleMessage(e, foundWidget);
   });
 
 }
 
-// main is executed if DOM is fully loaded.
-document.addEventListener('DOMContentLoaded', main);
+// baresthoMain is executed if DOM is fully loaded.
+document.addEventListener('DOMContentLoaded', baresthoMain);
