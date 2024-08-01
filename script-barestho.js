@@ -39,7 +39,10 @@ class BaresthoWidgetManager {
     }
   }
 
-  openPopup() {
+  /**
+   * @param {string} id 
+   */
+  openPopup(id) {
     const widget = document.querySelector(`.${BARESTHO_WIDGET_ID}.${BARESTHO_WIDGET_VIEW_MODES.POPUP}#${id}`);
     widget?.classList.add("open");
     this.managePopupBackground('create');
