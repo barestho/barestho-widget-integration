@@ -23,10 +23,10 @@ const WIDGET_VIEW_MODES = {
 // Main
 
 function manageBackground(action) {
-  const backgroundDiv = document.getElementById('background-overlay');
+  const backgroundDiv = document.getElementById('background-overlay-barestho');
   if (action === 'create' && !backgroundDiv) {
     const newBackgroundDiv = document.createElement('div');
-    newBackgroundDiv.id = 'background-overlay';
+    newBackgroundDiv.id = 'background-overlay-barestho';
     document.body.appendChild(newBackgroundDiv);
   } else if (action === 'remove' && backgroundDiv) {
     backgroundDiv.remove();
