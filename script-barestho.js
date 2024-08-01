@@ -104,7 +104,7 @@ class BaresthoWidgetManager {
   }
 }
 
-window.BARESTHO = new BaresthoWidgetManager();
+var barestho = new BaresthoWidgetManager();
 
 // baresthoMain is executed if DOM is fully loaded.
-document.addEventListener('DOMContentLoaded', window.BARESTHO.main);
+document.addEventListener('DOMContentLoaded', barestho.main);
